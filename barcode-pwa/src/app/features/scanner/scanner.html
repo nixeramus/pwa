@@ -1,0 +1,18 @@
+<div style="padding:16px">
+  <h2>Сканирование штрих-кодов</h2>
+
+  <div *ngIf="error" class="k-messagebox k-messagebox-error">{{ error }}</div>
+
+  <video #video autoplay playsinline muted
+         style="width:100%;max-width:520px;border:1px solid #ccc;border-radius:8px"></video>
+
+  <div style="margin-top:12px">
+    <button kendoButton (click)="start()" [disabled]="scanning">Старт</button>
+    <button kendoButton (click)="stop()" [disabled]="!scanning" style="margin-left:8px">Стоп</button>
+    <span style="margin-left:12px">Последний: <strong>{{ lastCode || '—' }}</strong></span>
+  </div>
+
+  <div style="margin-top:8px" class="k-messagebox k-messagebox-info">
+    Для доступа к камере нужен HTTPS или http://localhost.
+  </div>
+</div>

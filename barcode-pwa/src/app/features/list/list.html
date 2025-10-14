@@ -1,0 +1,35 @@
+       <div style="padding:16px">
+      <h2>Сохранённые сканы</h2>
+
+      <button kendoButton (click)="reload()">Обновить</button>
+      <button kendoButton (click)="validate()" [disabled]="loading" style="margin-left:8px">
+        Проверить (заглушка)
+      </button>
+      <button kendoButton (click)="clearAll()" [disabled]="loading" style="margin-left:8px">
+        Очистить
+      </button>
+      <span *ngIf="info" style="margin-left:12px">{{ info }}</span>
+
+      <kendo-grid [data]="data" [height]="460" style="margin-top:12px">
+        <kendo-grid-column field="code" title="Код"></kendo-grid-column>
+
+        <kendo-grid-column field="status" title="Статус" [width]="140">
+          <ng-template kendoGridCellTemplate let-d>
+            <span [ngSwitch]="d.status">
+              <span *ngSwitchCase="'valid'">✅ valid</span>
+              <span *ngSwitchCase="'invalid'">❌ invalid</span>
+              <span *ngSwitchCase="'pending'">⏳ pending</span>
+              <span *ngSwitchDefault>⚠️ error</span>
+            </span>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column field="serverMessage" title="Сообщение"></kendo-grid-column>
+
+        <kendo-grid-column field="createdAt" title="Создан" [width]="180">
+          <ng-template kendoGridCellTemplate let-d>
+            {{ d.createdAt | date:'yyyy-MM-dd HH:mm' }}
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid>
+    </div>

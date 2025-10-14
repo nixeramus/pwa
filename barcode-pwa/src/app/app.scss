@@ -1,0 +1,3 @@
+@use "@progress/kendo-theme-default/scss/all" as *;
+ .top-actions :where(button,a) { margin-left: 0 }
+    .top-actions :where(button,a) + :where(button,a) { margin-left: 8px }
