@@ -18,6 +18,7 @@ export class ScannerComponent implements OnInit, OnDestroy {
   private reader = new BrowserMultiFormatReader();
   private controls?: IScannerControls;
 
+  highlight = false;
   scanning = false;
   lastCode?: string;
   error?: string;
@@ -88,6 +89,8 @@ export class ScannerComponent implements OnInit, OnDestroy {
             if (code && code !== this.lastCode) {
               this.lastCode = code;
               navigator.vibrate?.(40);
+                this.highlight = true;              // включаем подсветку
+                setTimeout(() => this.highlight = false, 150); // выключаем через 150 мс
               console.log('Найден штрих-код:', code);
                await this.store.addScan(code);   // <-- сохраняем локально
               console.log('Сохранён код:', code);
