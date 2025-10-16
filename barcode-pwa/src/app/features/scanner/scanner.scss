@@ -1,8 +1,8 @@
 .video-wrapper {
   position: relative;
   display: inline-block;
-  border: 4px solid transparent;
-  border-radius: 8px;
+  border: 12px solid transparent; // увеличена толщина рамки
+  border-radius: 16px; // увеличен радиус
   transition: border-color 0.15s;
 
   &.highlight {
@@ -13,6 +13,6 @@
     width: 100%;
     max-width: 520px;
     display: block;
-    border-radius: 6px;
+    border-radius: 10px;
   }
 }

@@ -89,10 +89,10 @@ export class ScannerComponent implements OnInit, OnDestroy {
             if (code && code !== this.lastCode) {
               this.lastCode = code;
               navigator.vibrate?.(40);
-                this.highlight = true;              // включаем подсветку
-                setTimeout(() => this.highlight = false, 150); // выключаем через 150 мс
+              this.highlight = true;              // включаем подсветку
+              setTimeout(() => this.highlight = false, 1200); // выключаем через 1.2 секунды
               console.log('Найден штрих-код:', code);
-               await this.store.addScan(code);   // <-- сохраняем локально
+              await this.store.addScan(code);   // <-- сохраняем локально
               console.log('Сохранён код:', code);
             }
           }
